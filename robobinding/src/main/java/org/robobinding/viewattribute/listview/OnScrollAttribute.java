@@ -28,39 +28,36 @@ import android.widget.ListView;
  * @author jihunlee
  * 
  */
-public class OnScrollAttribute extends AbstractCommandViewAttribute<ListView>
-		implements
-			ViewListenersAware<ListViewListeners> {
-	private ListViewListeners listViewListeners;
+public class OnScrollAttribute extends AbstractCommandViewAttribute<ListView> implements ViewListenersAware<ListViewListeners> {
+    private ListViewListeners listViewListeners;
 
-	@Override
-	public void setViewListeners(ListViewListeners listViewListeners) {
-		this.listViewListeners = listViewListeners;
+    @Override
+    public void setViewListeners(ListViewListeners listViewListeners) {
+	this.listViewListeners = listViewListeners;
 
-	}
+    }
 
-	@Override
-	protected void bind(final Command command) {
-		listViewListeners.addOnScrollListener(new OnScrollListener() {
+    @Override
+    protected void bind(final Command command) {
+	listViewListeners.addOnScrollListener(new OnScrollListener() {
 
-			@Override
-			public void onScrollStateChanged(AbsListView view, int scrollState) {
+	    @Override
+	    public void onScrollStateChanged(AbsListView view, int scrollState) {
 
-			}
+	    }
 
-			@Override
-			public void onScroll(AbsListView view, int firstVisibleItem,
-					int visibleItemCount, int totalItemCount) {
-				ScrollEvent scrollEvent = new ScrollEvent(view,
-						firstVisibleItem, visibleItemCount, totalItemCount);
-				command.invoke(scrollEvent);
-			}
-		});
+	    @Override
+	    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+		ScrollEvent scrollEvent = new ScrollEvent(view, firstVisibleItem, visibleItemCount, totalItemCount);
+		command.invoke(scrollEvent);
+	    }
+	});
 
-	}
-	@Override
-	protected Class<?> getPreferredCommandParameterType() {
-		return ScrollEvent.class;
-	}
+    }
+
+    @Override
+    protected Class<?> getPreferredCommandParameterType() {
+	return ScrollEvent.class;
+    }
 
 }
