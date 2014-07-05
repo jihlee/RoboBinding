@@ -20,12 +20,12 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+
 import com.xtremelabs.robolectric.Robolectric;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import com.xtremelabs.robolectric.shadows.ShadowView;
-
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
 
 /**
  * 

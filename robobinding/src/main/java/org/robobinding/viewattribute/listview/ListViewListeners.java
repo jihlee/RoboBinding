@@ -5,25 +5,30 @@ import org.robobinding.viewattribute.adapterview.AdapterViewListeners;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 
+/**
+*
+* @author jihunlee
+*
+*/
 public class ListViewListeners extends AdapterViewListeners {
-	private final ListView listView;
-	private OnScrollListeners onScrollListeners;
+    private final ListView listView;
+    private OnScrollListeners onScrollListeners;
 
-	public ListViewListeners(ListView listView) {
-		super(listView);
-		this.listView = listView;
-	}
+    public ListViewListeners(ListView listView) {
+	super(listView);
+	this.listView = listView;
+    }
 
-	public void addOnScrollListener(OnScrollListener onScrollListener) {
-		ensureOnScrollListenersInitialized();
-		onScrollListeners.addListener(onScrollListener);
-	}
+    public void addOnScrollListener(OnScrollListener onScrollListener) {
+	ensureOnScrollListenersInitialized();
+	onScrollListeners.addListener(onScrollListener);
+    }
 
-	private void ensureOnScrollListenersInitialized() {
-		if (onScrollListeners == null) {
-			onScrollListeners = new OnScrollListeners();
-			listView.setOnScrollListener(onScrollListeners);
-		}
+    private void ensureOnScrollListenersInitialized() {
+	if (onScrollListeners == null) {
+	    onScrollListeners = new OnScrollListeners();
+	    listView.setOnScrollListener(onScrollListeners);
 	}
+    }
 
 }
